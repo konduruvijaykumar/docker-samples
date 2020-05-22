@@ -24,7 +24,7 @@ public class SpringbootStudentinfoApplication {
 	// http://stackoverflow.com/questions/17803718/view-content-of-embedded-h2-database-started-by-spring
 	@Bean
 	public ServletRegistrationBean<WebServlet> h2ServletRegistration() {
-		ServletRegistrationBean<WebServlet> servletRegistrationBean = new ServletRegistrationBean<WebServlet>(new WebServlet());
+		ServletRegistrationBean<WebServlet> servletRegistrationBean = new ServletRegistrationBean<>(new WebServlet());
 		// servletRegistrationBean.setServlet(new WebServlet());
 		servletRegistrationBean.addUrlMappings("/h2-console/*");
 		servletRegistrationBean.addInitParameter("webAllowOthers", "true");
