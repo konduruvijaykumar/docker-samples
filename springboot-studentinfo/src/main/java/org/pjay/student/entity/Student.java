@@ -3,6 +3,7 @@
  */
 package org.pjay.student.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,11 +23,22 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "STUDENT_ID")
 	private Long studentId;
+	
+	@Column(name = "AGE")
 	private Integer age;
+	
+	@Column(name = "FIRST_NAME")
 	private String firstName;
+	
+	@Column(name = "LAST_NAME")
 	private String lastName;
+	
+	@Column(name = "EMAIL")
 	private String email;
+	
+	@Column(name = "COURSE")
 	private String course;
 
 	public Long getStudentId() {
