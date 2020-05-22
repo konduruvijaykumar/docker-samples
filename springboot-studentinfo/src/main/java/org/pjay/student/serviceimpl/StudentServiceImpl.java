@@ -5,11 +5,10 @@ package org.pjay.student.serviceimpl;
 
 import java.util.List;
 
-import javax.persistence.PersistenceContext;
-
 import org.pjay.student.entity.Student;
 import org.pjay.student.repository.StudentRepository;
 import org.pjay.student.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,8 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-	// @Autowired
-	@PersistenceContext
+	// @PersistenceContext -- not working received below error
+	// Specified field type [interface
+	// org.pjay.student.repository.StudentRepository] is incompatible with resource
+	// type [javax.persistence.EntityManager]
+	@Autowired
 	StudentRepository studentRepository;
 
 	@Override
