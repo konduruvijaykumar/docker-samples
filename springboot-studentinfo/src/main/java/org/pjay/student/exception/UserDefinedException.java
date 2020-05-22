@@ -8,7 +8,7 @@ package org.pjay.student.exception;
  *
  */
 // Might not be used, but keeping a template class for understanding
-public class UserDefinedException extends Exception {
+public class UserDefinedException extends RuntimeException {
 
 	/**
 	 * 
