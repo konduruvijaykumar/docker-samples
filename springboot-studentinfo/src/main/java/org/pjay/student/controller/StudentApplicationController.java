@@ -34,13 +34,6 @@ public class StudentApplicationController {
 	@Autowired
 	StudentInfoToStudent studentInfoToStudent;
 
-	@GetMapping(value = { "", "/" })
-	public ResponseEntity<Results> welcome() {
-		Results results = new Results();
-		results.setResult("Welcome to student web service, this service is working");
-		return new ResponseEntity<>(results, HttpStatus.OK);
-	}
-
 	@GetMapping("/{studentId}")
 	public ResponseEntity<Results> getStudentById(@PathVariable("studentId") Long studentId) {
 		Student student = studentService.getStudentById(studentId);
