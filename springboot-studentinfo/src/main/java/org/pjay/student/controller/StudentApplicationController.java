@@ -3,6 +3,8 @@
  */
 package org.pjay.student.controller;
 
+import java.util.List;
+
 import org.pjay.student.converter.StudentInfoToStudent;
 import org.pjay.student.converter.StudentToStudentInfo;
 import org.pjay.student.entity.Student;
@@ -43,6 +45,14 @@ public class StudentApplicationController {
 			results.setResult(studentInfo);
 			return new ResponseEntity<>(results, HttpStatus.OK);
 		}
+		return new ResponseEntity<>(results, HttpStatus.OK);
+	}
+
+	@GetMapping(value = { "", "/" })
+	public ResponseEntity<Results> getAllStudents() {
+		List<Student> allStudents = studentService.getAllStudents();
+		Results results = new Results();
+		results.setResult(allStudents);
 		return new ResponseEntity<>(results, HttpStatus.OK);
 	}
 
