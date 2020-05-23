@@ -73,12 +73,15 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public boolean deleteStudentById(Long studentId) {
-		try {
-			studentRepository.deleteById(studentId);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Do nothing
+		Optional<Student> findById = studentRepository.findById(studentId);
+		if (findById.isPresent()) {
+			try {
+				studentRepository.deleteById(studentId);
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				// Do nothing
+			}
 		}
 		return false;
 	}

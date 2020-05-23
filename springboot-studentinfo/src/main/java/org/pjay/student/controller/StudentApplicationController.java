@@ -86,12 +86,24 @@ public class StudentApplicationController {
 	@DeleteMapping(value = { "", "/" })
 	public ResponseEntity<Results> deleteStudent(@RequestBody StudentInfo studentInfo) {
 		Results results = new Results();
-//		if (null == studentInfo.getStudentId()) {
-//			results.setResult("Student Info does not contain studentId. Please verify input");
-//			return new ResponseEntity<>(results, HttpStatus.NOT_FOUND);
-//		}
+		// if (null == studentInfo.getStudentId()) {
+		// results.setResult("Student Info does not contain studentId.");
+		// return new ResponseEntity<>(results, HttpStatus.NOT_FOUND);
+		// }
 		Student student = studentInfoToStudent.convert(studentInfo);
 		boolean isStudentDeleted = studentService.deleteStudent(student);
+		if (isStudentDeleted) {
+			results.setResult("Delete completed successfully");
+			return new ResponseEntity<>(results, HttpStatus.NO_CONTENT);
+		}
+		results.setResult("Delete not successful, as no student found with input data provided");
+		return new ResponseEntity<>(results, HttpStatus.NOT_FOUND);
+	}
+
+	@DeleteMapping("/{studentId}")
+	public ResponseEntity<Results> deleteStudentById(@PathVariable("studentId") Long studentId) {
+		Results results = new Results();
+		boolean isStudentDeleted = studentService.deleteStudentById(studentId);
 		if (isStudentDeleted) {
 			results.setResult("Delete completed successfully");
 			return new ResponseEntity<>(results, HttpStatus.NO_CONTENT);
