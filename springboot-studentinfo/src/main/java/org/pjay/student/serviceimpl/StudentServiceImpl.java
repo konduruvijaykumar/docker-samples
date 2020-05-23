@@ -4,6 +4,7 @@
 package org.pjay.student.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.pjay.student.entity.Student;
 import org.pjay.student.repository.StudentRepository;
@@ -27,7 +28,9 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student getStudentById(Long studentId) {
-		return studentRepository.getOne(studentId);
+		// return studentRepository.getOne(studentId);
+		Optional<Student> findById = studentRepository.findById(studentId);
+		return findById.isPresent() ? findById.get() : null;
 	}
 
 	@Override
