@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,14 +62,24 @@ public class StudentApplicationController {
 	}
 
 	@PostMapping(value = { "", "/" })
-	public ResponseEntity<Results> addStudent(@RequestBody Student student) {
+	public ResponseEntity<Results> addStudent(@RequestBody StudentInfo studentInfo) {
 		Results results = new Results();
+		Student student = studentInfoToStudent.convert(studentInfo);
 		Student createdStudent = studentService.createStudent(student);
 		/* fromCurrentContextPath() */
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{studentId}")
 				.buildAndExpand(createdStudent.getStudentId()).toUri();
 		results.setResult(uri);
 		return new ResponseEntity<>(results, HttpStatus.CREATED);
+	}
+
+	@PutMapping(value = { "", "/" })
+	public ResponseEntity<Results> updateStudent(@RequestBody StudentInfo studentInfo) {
+		Results results = new Results();
+		Student student = studentInfoToStudent.convert(studentInfo);
+		Student updatedStudent = studentService.updateStudent(student);
+		results.setResult(updatedStudent);
+		return new ResponseEntity<>(results, HttpStatus.OK);
 	}
 
 }
