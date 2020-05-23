@@ -5,11 +5,13 @@ package org.pjay.student.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.pjay.student.exception.StudentNotFoundException;
 import org.pjay.student.exception.UserDefinedException;
 import org.pjay.student.model.Error;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -30,6 +32,12 @@ public class StudentApplicationControllerAdvice {
 	public ResponseEntity<Error> handleCustomException(UserDefinedException exception) {
 		return new ResponseEntity<>(new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage()),
 				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Student not found")
+	@ExceptionHandler(value = { StudentNotFoundException.class })
+	public void handleStudentNotFoundException() {
+		// Nothing to do
 	}
 
 	private HttpStatus getStatus(HttpServletRequest request) {

@@ -15,6 +15,7 @@ import org.pjay.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +81,23 @@ public class StudentApplicationController {
 		Student updatedStudent = studentService.updateStudent(student);
 		results.setResult(updatedStudent);
 		return new ResponseEntity<>(results, HttpStatus.OK);
+	}
+
+	@DeleteMapping(value = { "", "/" })
+	public ResponseEntity<Results> deleteStudent(@RequestBody StudentInfo studentInfo) {
+		Results results = new Results();
+//		if (null == studentInfo.getStudentId()) {
+//			results.setResult("Student Info does not contain studentId. Please verify input");
+//			return new ResponseEntity<>(results, HttpStatus.NOT_FOUND);
+//		}
+		Student student = studentInfoToStudent.convert(studentInfo);
+		boolean isStudentDeleted = studentService.deleteStudent(student);
+		if (isStudentDeleted) {
+			results.setResult("Delete completed successfully");
+			return new ResponseEntity<>(results, HttpStatus.NO_CONTENT);
+		}
+		results.setResult("Delete not successful, as no student found with input data provided");
+		return new ResponseEntity<>(results, HttpStatus.NOT_FOUND);
 	}
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pjay.student.entity.Student;
+import org.pjay.student.exception.StudentNotFoundException;
 import org.pjay.student.repository.StudentRepository;
 import org.pjay.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +49,24 @@ public class StudentServiceImpl implements StudentService {
 		return studentRepository.save(student);
 	}
 
+	// Better implement only deleteById, this is causing unnecessary confusion
 	@Override
 	public boolean deleteStudent(Student student) {
-		try {
-			studentRepository.delete(student);
-			return true;
-		} catch (Exception e) {
-			// e.printStackTrace();
-			// Do nothing
+		if (null == student.getStudentId()) {
+			throw new StudentNotFoundException();
+		}
+		Optional<Student> findById = studentRepository.findById(student.getStudentId());
+		if (findById.isPresent()) {
+			try {
+				// Note: delete(T entity) method in repository works when id is present else
+				// delete will not happen. Please verify delete(T entity) method implementation
+				// in SimpleJpaRepository.
+				studentRepository.delete(student);
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				// Do nothing
+			}
 		}
 		return false;
 	}
@@ -66,7 +77,7 @@ public class StudentServiceImpl implements StudentService {
 			studentRepository.deleteById(studentId);
 			return true;
 		} catch (Exception e) {
-			// e.printStackTrace();
+			e.printStackTrace();
 			// Do nothing
 		}
 		return false;
