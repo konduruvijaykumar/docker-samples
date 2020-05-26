@@ -1,2 +1,8 @@
 https://stackoverflow.com/questions/4157189/git-pull-while-ignoring-local-changes
 https://stackoverflow.com/questions/24983762/git-ignore-local-file-changes/24983863
+
+https://stackoverflow.com/questions/29782915/spring-boot-jsp-404
+https://stackoverflow.com/questions/45684146/spring-boot-jsp-not-found/45685114
+
+https://stackoverflow.com/questions/4764405/how-to-use-relative-paths-without-including-the-context-root-name
+https://stackoverflow.com/questions/19724565/how-is-using-request-getcontextpath-better-than
