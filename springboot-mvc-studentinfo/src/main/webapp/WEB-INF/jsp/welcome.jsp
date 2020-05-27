@@ -13,7 +13,7 @@
 	<div class="container-fluid">
 		<h3>Welcome to Student Info Application</h3>
 		<br></br>
-		<a href="${pageContext.request.contextPath}/testmessage">Test page</a>
+		<a href="${pageContext.request.contextPath}/testmessage">Test message</a>
 	</div>
 </body>
 </html>
