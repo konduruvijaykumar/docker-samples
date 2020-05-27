@@ -31,6 +31,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  */
 @RestController
 @RequestMapping("/students")
+// TODO: converting Student to StudentInfo object while sending to UI
 public class StudentApplicationController {
 
 	@Autowired
