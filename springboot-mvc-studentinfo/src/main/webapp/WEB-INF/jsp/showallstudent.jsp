@@ -14,13 +14,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h3>Add Student Information</h3>
-		<p>${ student.firstName }</p>
-		<p>${ student.lastName }</p>
-		<p>${ student.age }</p>
-		<p>${ student.email }</p>
-		<p>${ student.studentId }</p>
-		<p>${ student.course }</p>
+		<h3>Students</h3>
 	</div>
 </body>
 </html>
