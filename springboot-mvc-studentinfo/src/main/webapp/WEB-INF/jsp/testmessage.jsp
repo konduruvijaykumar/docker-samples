@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h3>
+		<h3 class="font-weight-bold">
 			Testing page with message - <span class="text-primary">${message}</span>
 		</h3>
 	</div>

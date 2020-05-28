@@ -15,15 +15,14 @@
 <body>
 	<form action="${pageContext.request.contextPath}/home">
 		<div class="container-fluid">
-			<h3>Student Information</h3>
+			<h3 class="font-weight-bold">Student Information</h3>
 			<p>Student Id: ${ student.studentId }</p>
 			<p>First Name: ${ student.firstName }</p>
 			<p>Last Name: ${ student.lastName }</p>
 			<p>Age: ${ student.age }</p>
 			<p>Email: ${ student.email }</p>
 			<p>Course: ${ student.course }</p>
-			<br></br>
-			<input type="submit" value="Go Home">
+			<button type="submit" class="btn btn-success">Home</button>
 		</div>
 	</form>
 </body>

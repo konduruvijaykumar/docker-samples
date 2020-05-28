@@ -16,7 +16,7 @@
 	<form action="${pageContext.request.contextPath}/addstudent"
 		method="post">
 		<div class="container-fluid">
-			<h3>Add Student Information</h3>
+			<h3 class="font-weight-bold">Add Student Information</h3>
 			<p>
 				First Name: <input type="text" name="firstName"
 					value="${ student.firstName }">
@@ -34,7 +34,7 @@
 			<p>
 				Course: <input type="text" name="course" value="${ student.course }">
 			</p>
-			<input type="submit" value="Add Student">
+			<button type="submit" class="btn btn-success">Add Student</button>
 		</div>
 	</form>
 </body>

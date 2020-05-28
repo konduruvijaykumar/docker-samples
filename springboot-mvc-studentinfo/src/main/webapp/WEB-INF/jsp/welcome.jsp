@@ -14,14 +14,14 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h3>Welcome to Student Info Application</h3>
+		<h3 class="font-weight-bold">Welcome to Student Info Application</h3>
 		<p>
-			<a href="${pageContext.request.contextPath}/testmessage">Test
-				message</a>
+			<a href="${pageContext.request.contextPath}/testmessage"
+				class="btn btn-primary btn-lg active" role="button">Test message</a>
 		</p>
 		<p>
-			<a href="${pageContext.request.contextPath}/addstudent">Add
-				Student</a>
+			<a href="${pageContext.request.contextPath}/addstudent"
+				class="btn btn-primary btn-lg active" role="button">Add Student</a>
 		</p>
 	</div>
 </body>

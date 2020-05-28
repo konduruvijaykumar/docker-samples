@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h3>Update Student Information</h3>
+		<h3 class="font-weight-bold">Update Student Information</h3>
 	</div>
 </body>
 </html>

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h3>Students</h3>
+		<h3 class="font-weight-bold">Students</h3>
 	</div>
 </body>
 </html>
