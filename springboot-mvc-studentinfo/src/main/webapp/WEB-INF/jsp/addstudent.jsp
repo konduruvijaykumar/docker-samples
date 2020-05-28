@@ -13,14 +13,29 @@
 <title>Student Info</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<h3>Add Student Information</h3>
-		<p>${ student.firstName }</p>
-		<p>${ student.lastName }</p>
-		<p>${ student.age }</p>
-		<p>${ student.email }</p>
-		<p>${ student.studentId }</p>
-		<p>${ student.course }</p>
-	</div>
+	<form action="${pageContext.request.contextPath}/addstudent"
+		method="post">
+		<div class="container-fluid">
+			<h3>Add Student Information</h3>
+			<p>
+				First Name: <input type="text" name="firstName"
+					value="${ student.firstName }">
+			</p>
+			<p>
+				Last Name: <input type="text" name="lastName"
+					value="${ student.lastName }">
+			</p>
+			<p>
+				Age: <input type="text" name="age" value="${ student.age }">
+			</p>
+			<p>
+				Email: <input type="text" name="email" value="${ student.email }">
+			</p>
+			<p>
+				Course: <input type="text" name="course" value="${ student.course }">
+			</p>
+			<input type="submit" value="Add Student">
+		</div>
+	</form>
 </body>
 </html>
