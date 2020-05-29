@@ -14,11 +14,18 @@
 	function goHome() {
 		$('#go_home').submit();
 	}
+
+	function showStudents() {
+		$('#show_all_students').submit();
+	}
 </script>
 <title>Student Info</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/updatestudent"
+	<!-- As HTTP PUT and DELETE not supported by HTML let's use POST method to update data -->
+	<!-- https://stackoverflow.com/questions/165779/are-the-put-delete-head-etc-methods-available-in-most-web-browsers -->
+	<form
+		action="${pageContext.request.contextPath}/updatestudent?_method=PUT"
 		method="post" id="update_student">
 		<div class="container-fluid">
 			<h3 class="font-weight-bold">Update Student Information</h3>
@@ -46,9 +53,14 @@
 			<button type="submit" class="btn btn-success">Update Student</button>
 			&nbsp;
 			<button type="button" class="btn btn-success"
+				onclick="javascript:showStudents()">Show Students</button>
+			&nbsp;
+			<button type="button" class="btn btn-success"
 				onclick="javascript:goHome()">Home</button>
 		</div>
 	</form>
 	<form action="${pageContext.request.contextPath}/home" id="go_home"></form>
+	<form action="${pageContext.request.contextPath}/showallstudents"
+		id="show_all_students"></form>
 </body>
 </html>

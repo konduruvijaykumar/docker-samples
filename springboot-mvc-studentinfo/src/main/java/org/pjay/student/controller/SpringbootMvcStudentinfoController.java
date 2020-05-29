@@ -82,6 +82,16 @@ public class SpringbootMvcStudentinfoController {
 		return modelAndView;
 	}
 
+	// @PutMapping("/updatestudent")
+	// As HTTP PUT and DELETE not supported by HTML use POST method to update data
+	@PostMapping("/updatestudent")
+	public ModelAndView updateStudent(@ModelAttribute("studentinfo") StudentInfo studentInfo) {
+		ModelAndView modelAndView = new ModelAndView("showstudent");
+		Student updateStudent = studentService.updateStudent(studentInfoToStudent.convert(studentInfo));
+		modelAndView.addObject("student", updateStudent);
+		return modelAndView;
+	}
+
 	// @DeleteMapping("/deletestudent/{studentId}")
 	// As HTTP PUT and DELETE not supported by HTML use POST method to delete data
 	@PostMapping("/deletestudent/{studentId}")
