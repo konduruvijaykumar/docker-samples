@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,6 +67,17 @@ public class SpringbootMvcStudentinfoController {
 
 	@GetMapping("/showallstudents")
 	public ModelAndView showAllStudents() {
+		ModelAndView modelAndView = new ModelAndView("showallstudents");
+		List<Student> allStudents = studentService.getAllStudents();
+		modelAndView.addObject("students", allStudents);
+		return modelAndView;
+	}
+
+	// @DeleteMapping("/deletestudent/{studentId}")
+	// As HTTP PUT and DELETE not supported by HTML use POST method to delete data
+	@PostMapping("/deletestudent/{studentId}")
+	public ModelAndView deleteStudent(@PathVariable("studentId") Long studentId) {
+		studentService.deleteStudentById(studentId);
 		ModelAndView modelAndView = new ModelAndView("showallstudents");
 		List<Student> allStudents = studentService.getAllStudents();
 		modelAndView.addObject("students", allStudents);

@@ -8,3 +8,5 @@ https://stackoverflow.com/questions/4764405/how-to-use-relative-paths-without-in
 https://stackoverflow.com/questions/19724565/how-is-using-request-getcontextpath-better-than
 
 https://dzone.com/articles/using-the-spring-requestmapping-annotation
+
+https://www.codejava.net/frameworks/spring/spring-mvc-spring-data-jpa-hibernate-crud-example

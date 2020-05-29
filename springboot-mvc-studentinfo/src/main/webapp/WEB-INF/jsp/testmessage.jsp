@@ -13,10 +13,13 @@
 <title>Student Info</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<h3 class="font-weight-bold">
-			Testing page with message - <span class="text-primary">${message}</span>
-		</h3>
-	</div>
+	<form action="${pageContext.request.contextPath}/home">
+		<div class="container-fluid">
+			<h3 class="font-weight-bold">
+				Testing page with message - <span class="text-primary">${message}</span>
+			</h3>
+			<button type="submit" class="btn btn-success">Home</button>
+		</div>
+	</form>
 </body>
 </html>

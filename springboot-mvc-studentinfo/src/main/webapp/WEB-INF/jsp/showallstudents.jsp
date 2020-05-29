@@ -11,6 +11,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function deleteStudent(url) {
+		$('#delete_student').attr('action', url).submit();
+	}
+
+	function goHome() {
+		$('#go_home').submit();
+	}
+</script>
 <title>Student Info</title>
 </head>
 <body>
@@ -41,12 +50,20 @@
 							<td>${ student.course }</td>
 							<td><a
 								href="${pageContext.request.contextPath}/updatestudent?studentid=${student.studentId}">Edit</a>&nbsp;<a
-								href="${pageContext.request.contextPath}/deletestudent/${student.studentId}">Delete</a></td>
+								href="javascript:deleteStudent('${pageContext.request.contextPath}/deletestudent/${student.studentId}?_method=DELETE')">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+		<br></br>
+		<button type="button" class="btn btn-success"
+			onclick="javascript:goHome()">Home</button>
 	</div>
+	<!-- As HTTP PUT and DELETE not supported by HTML let's use POST method to delete data -->
+	<!-- https://stackoverflow.com/questions/165779/are-the-put-delete-head-etc-methods-available-in-most-web-browsers -->
+	<!-- Example URL: ${pageContext.request.contextPath}/deletestudent/${student.studentId}?_method=DELETE" -->
+	<form action="" method="post" id="delete_student"></form>
+	<form action="${pageContext.request.contextPath}/home" id="go_home"></form>
 </body>
 </html>

@@ -10,11 +10,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function goHome() {
+		$('#go_home').submit();
+	}
+</script>
 <title>Student Info</title>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath}/addstudent"
-		method="post">
+		method="post" id="add_student">
 		<div class="container-fluid">
 			<h3 class="font-weight-bold">Add Student Information</h3>
 			<p>
@@ -35,7 +40,12 @@
 				Course: <input type="text" name="course" value="${ student.course }">
 			</p>
 			<button type="submit" class="btn btn-success">Add Student</button>
+			&nbsp;
+			<button type="button" class="btn btn-success"
+				onclick="javascript:goHome()">Home</button>
 		</div>
 	</form>
+	<form action="${pageContext.request.contextPath}/home" method="get"
+		id="go_home"></form>
 </body>
 </html>
