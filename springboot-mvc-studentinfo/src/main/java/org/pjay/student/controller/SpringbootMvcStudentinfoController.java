@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -70,6 +71,14 @@ public class SpringbootMvcStudentinfoController {
 		ModelAndView modelAndView = new ModelAndView("showallstudents");
 		List<Student> allStudents = studentService.getAllStudents();
 		modelAndView.addObject("students", allStudents);
+		return modelAndView;
+	}
+
+	@GetMapping("/updatestudent")
+	public ModelAndView showUpdateStudentPage(@RequestParam("studentid") Long studentid) {
+		ModelAndView modelAndView = new ModelAndView("updatestudent");
+		Student student = studentService.getStudentById(studentid);
+		modelAndView.addObject("student", student);
 		return modelAndView;
 	}
 
