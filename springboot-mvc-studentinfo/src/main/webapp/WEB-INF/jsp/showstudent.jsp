@@ -16,12 +16,24 @@
 	<form action="${pageContext.request.contextPath}/home">
 		<div class="container-fluid">
 			<h3 class="font-weight-bold">Student Information</h3>
-			<p>Student Id: ${ student.studentId }</p>
-			<p>First Name: ${ student.firstName }</p>
-			<p>Last Name: ${ student.lastName }</p>
-			<p>Age: ${ student.age }</p>
-			<p>Email: ${ student.email }</p>
-			<p>Course: ${ student.course }</p>
+			<p>
+				Student Id: <span class="text-primary">${ student.studentId }</span>
+			</p>
+			<p>
+				First Name: <span class="text-primary">${ student.firstName }</span>
+			</p>
+			<p>
+				Last Name: <span class="text-primary">${ student.lastName }</span>
+			</p>
+			<p>
+				Age: <span class="text-primary">${ student.age }</span>
+			</p>
+			<p>
+				Email: <span class="text-primary">${ student.email }</span>
+			</p>
+			<p>
+				Course: <span class="text-primary">${ student.course }</span>
+			</p>
 			<button type="submit" class="btn btn-success">Home</button>
 		</div>
 	</form>

@@ -23,6 +23,10 @@
 			<a href="${pageContext.request.contextPath}/addstudent"
 				class="btn btn-primary btn-lg active" role="button">Add Student</a>
 		</p>
+		<p>
+			<a href="${pageContext.request.contextPath}/showallstudents"
+				class="btn btn-primary btn-lg active" role="button">Show Students</a>
+		</p>
 	</div>
 </body>
 </html>

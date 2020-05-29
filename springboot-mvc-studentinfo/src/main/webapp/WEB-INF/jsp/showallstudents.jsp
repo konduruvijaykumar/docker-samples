@@ -16,5 +16,9 @@
 	<div class="container-fluid">
 		<h3 class="font-weight-bold">Students</h3>
 	</div>
+	<div class="table-responsive">
+		<table class="table">
+		</table>
+	</div>
 </body>
 </html>

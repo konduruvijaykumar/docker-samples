@@ -3,6 +3,7 @@
  */
 package org.pjay.student.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.pjay.student.converter.StudentInfoToStudent;
@@ -25,13 +26,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 // TODO: converting Student to StudentInfo object while sending to UI
 public class SpringbootMvcStudentinfoController {
-	
+
 	@Autowired
 	StudentService studentService;
-	
+
 	@Autowired
 	StudentInfoToStudent studentInfoToStudent;
-	
+
 	@Autowired
 	StudentToStudentInfo studentToStudentInfo;
 
@@ -54,12 +55,20 @@ public class SpringbootMvcStudentinfoController {
 		model.put("student", studentInfo);
 		return "addstudent";
 	}
-	
+
 	@PostMapping("/addstudent")
 	public ModelAndView addStudent(@ModelAttribute() StudentInfo studentInfo) {
 		ModelAndView modelAndView = new ModelAndView("showstudent");
 		Student createdStudent = studentService.createStudent(studentInfoToStudent.convert(studentInfo));
 		modelAndView.addObject("student", createdStudent);
+		return modelAndView;
+	}
+
+	@GetMapping("/showallstudents")
+	public ModelAndView showAllStudents() {
+		ModelAndView modelAndView = new ModelAndView("showallstudents");
+		List<Student> allStudents = studentService.getAllStudents();
+		modelAndView.addObject("students", allStudents);
 		return modelAndView;
 	}
 
